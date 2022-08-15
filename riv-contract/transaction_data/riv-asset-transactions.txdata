@@ -1,0 +1,44 @@
+[
+    {
+        "transactionName": "rivAssetExists",
+        "transactionLabel": "A test rivAssetExists transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "createRivAsset",
+        "transactionLabel": "A test createRivAsset transaction",
+        "arguments": [
+            "001",
+            "some value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "readRivAsset",
+        "transactionLabel": "A test readRivAsset transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "updateRivAsset",
+        "transactionLabel": "A test updateRivAsset transaction",
+        "arguments": [
+            "001",
+            "some other value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "deleteRivAsset",
+        "transactionLabel": "A test deleteRivAsset transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    }
+]
