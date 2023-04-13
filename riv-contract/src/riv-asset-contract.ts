@@ -11,7 +11,7 @@ export class RivAssetContract extends Contract {
         return (!!data && data.length > 0);
     }
 
-    //Creación del papel registro y almacenamiento en cooperativa
+    //Creation of registration paper and cooperative storage
     @Transaction()
     @Returns('RivAsset')
     public async createRivAsset(ctx: Context,
@@ -60,7 +60,7 @@ export class RivAssetContract extends Contract {
         return rivAsset;
     }
 
-    //Mover el vino a un deposito
+    //Move the wine to a warehouse
     @Transaction()
     public async placeMoveRivAsset(ctx: Context, rivAssetId: string, depositoAlmacenaje: string): Promise<void> {
         const exists: boolean = await this.rivAssetExists(ctx, rivAssetId);
@@ -73,7 +73,7 @@ export class RivAssetContract extends Contract {
         await ctx.stub.putState(rivAssetId, buffer);
     }
 
-    //Fermentación del vino
+    //Wine fermentation
     @Transaction()
     public async fermentationRivAsset(ctx: Context, rivAssetId: string, pesoFermentacion: number): Promise<void> {
         const exists: boolean = await this.rivAssetExists(ctx, rivAssetId);
@@ -97,7 +97,7 @@ export class RivAssetContract extends Contract {
         await ctx.stub.putState(rivAssetId, buffer);
     }
 
-    //Vendida de vino-uva entre bodegas
+    //Wine-grape sold between wineries
     @Transaction()
     public async soldRivAsset(ctx: Context, rivAssetId: string, bodega: string): Promise<void> {
         const exists: boolean = await this.rivAssetExists(ctx, rivAssetId);
@@ -117,7 +117,7 @@ export class RivAssetContract extends Contract {
         await ctx.stub.putState(rivAssetId, buffer);
     }
 
-    //Se canjea el vino y pasa a embotellado
+    //The wine is exchanged and goes on to bottling
     @Transaction()
     public async bottleRivAsset(ctx: Context, rivAssetId: string): Promise<void> {
         const exists: boolean = await this.rivAssetExists(ctx, rivAssetId);
@@ -133,14 +133,14 @@ export class RivAssetContract extends Contract {
         await ctx.stub.putState(rivAssetId, buffer);
     }
 
-    //Si se separa cierta cantidad en otro deposito
+    //If a certain amount is separated in another deposit
     @Transaction()
     public async divideRivAsset(ctx: Context, rivAssetId: string, seleccionKilos: number ): Promise<void> {
         const exists: boolean = await this.rivAssetExists(ctx, rivAssetId);
         if (!exists) {
             throw new Error(`El asset ${rivAssetId} no existe`);
         }
-        //Recuperamos datos del padre y lo damos de baja de manera lógica
+        //We recover data from the father and we cancel it logically
         const rivAsset: RivAsset = await this.readRivAsset(ctx,rivAssetId);
         rivAsset.fechaBaja = new Date().toTimeString();
         if(seleccionKilos>rivAsset.pesoNeto){
@@ -178,7 +178,7 @@ export class RivAssetContract extends Contract {
     }
 
 
-    //Consulta al libro mayor para obtener cualquier riv-asset
+    //Consult the ledger for any riv-asset
     @Transaction(false)
     @Returns('RivAsset')
     public async readRivAsset(ctx: Context, rivAssetId: string): Promise<RivAsset> {
