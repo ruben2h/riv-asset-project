@@ -15,6 +15,7 @@ async function main() {
         { enabled: true, 
           asLocalhost: true } 
     };
+    // Connect the gateway
     await gateway.connect(connectionProfile, connectionOptions);
     // Get the network (channel) our contract is deployed to.
     const network = await gateway.getNetwork('mychannel');
